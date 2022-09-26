@@ -1,16 +1,14 @@
+const { proxyPath } = require('./utils');
+
 const express = require('express')
 const router = express.Router({ mergeParams: true })
 
-router.get('/', function (req, res) {
+router.get(proxyPath(''), function (req, res) {
   res.redirect('/config')
 })
 
-router.get('/about', function (req, res) {
-  res.render('about')
-})
-
 // universal404
-router.get('/404', function (req, res) {
+router.get(proxyPath('404'), function (req, res) {
   res.render('fourOhFour')
 })
 
@@ -18,7 +16,7 @@ router.get('/404', function (req, res) {
 router.get('*', function (req, res) {
   console.log('404ing, reason:')
   console.log(req.params)
-  res.redirect('/404')
+  res.redirect(proxyPath('404'))
 })
 
 module.exports = router

@@ -1,15 +1,16 @@
 const express   = require('express')
+const { proxyPath } = require('./utils');
 const sebCg     = require('../configGen.js')
 const convert   = require('xml-js')
       
 const router    = express.Router({mergeParams: true});
 
 //index route
-router.get('/', function(req, res){
+router.get(proxyPath(''), function(req, res){
   res.render('index');
 });
 
-router.post('/',function (req, res) {
+router.post(proxyPath(''),function (req, res) {
   if (Object.keys(req.query).length === 0) { // handle cases with and withour param just in case
     var courseID = req.body.courseID
     var cVar = req.body.cVar

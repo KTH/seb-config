@@ -1,6 +1,7 @@
 const express           = require('express')
 const expressSanitizer  = require('express-sanitizer')
 const bodyParser        = require('body-parser')
+const { proxyPath } = require('./routes/utils');
 const ejs               = require('ejs')
 
 // Route links
@@ -13,8 +14,15 @@ const app = express()
 // App Config
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(expressSanitizer())
-app.use('/', express.static(__dirname))
+
+// Tell monitoring system that application is up and running
+app.get(proxyPath('_monitor'), (req, res) => {
+  res.send("APPLICATION_STATUS: OK\n");
+})
+
+app.use(proxyPath(''), express.static(__dirname))
 app.set('view engine', 'ejs')
+
 
 // Use Routes
 app.use('/config', configRoutes)
