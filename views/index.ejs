@@ -1,0 +1,34 @@
+<%- include ("partials/header") %>
+
+<div class="container pt-3">
+    <form action="/config" method="POST">
+      <div class="form-group">
+          <label for="courseID">Please provide KTH Canvas Course ID:</label>
+          <input type="text" maxlength="10" pattern="\d*" title="numbers only" class="form-control col-md-2" id="courseID" name="courseID" placeholder="courseID" value="" required><small id="idHelpInline" class="text-muted">
+            Numbers only, max 10 digits. (http://canvas.kth.se/courses/<b>courseID</b>)
+          </small>
+        </div>
+        <button type="submit" class="btn btn-success" value=1 name="cVar">Generate</button>
+         
+  </form>
+</div>
+<div class="container pt-3">
+  <small class="text-muted">
+  You can also send a post request to /config? with courseID=xxxx
+</small>
+</div>
+<div class="container pt-3">
+<form action="/config" method="POST">
+    <button type="submit" class="btn btn-info" value=0 name="cVar">Generate Universal</button>  
+</form>
+</div>
+<div class="container pt-3">
+  <small class="text-muted">
+  You can also send a post request to /config? with cVar=0 for universal.
+  Note: /config?courseID=xxx&cVar=0 return Universal as well.
+</small>
+</div>
+
+<%- include ("partials/footer") %>
+
+

@@ -1,0 +1,25 @@
+{
+  "name": "seb-config",
+  "version": "0.1.0",
+  "description": "SEB Config Generator - KTH",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js"
+  },
+  "author": "Chris (sony2k) krzsta@kth.se",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-sanitizer": "^1.0.6",
+    "fs": "^0.0.1-security",
+    "jest": "^27.5.1",
+    "method-override": "^3.0.0",
+    "xml-js": "^1.6.11"
+  },
+  "engines": {
+    "node": ">=17.0.0"
+  }
+}
