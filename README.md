@@ -20,5 +20,3 @@ Examples:
 - `/config?courseID=9298&limit=1` will result in `CourseID Config`
 - `/config?limit=0` will result in `Universal Config`
 - `/config?limit=1` will result in 400 Bad Request
-
-.
