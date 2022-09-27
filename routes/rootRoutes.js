@@ -13,7 +13,7 @@ router.get('/', function(req, res){
 });
 
 //submit form
-router.post('/', function (req, res) {
+router.post('/q', function (req, res) {
   // Case for User Generated configs
   if (Object.keys(req.query).length === 0) { // handle cases with and withour param just in case
     var courseID = req.body.courseID
