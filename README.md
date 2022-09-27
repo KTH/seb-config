@@ -21,4 +21,3 @@ Examples:
 - `/config?cVar=0` will result in `Universal Config`
 - `/config?cVar=1` will result in 400 Bad Request
 
-.
