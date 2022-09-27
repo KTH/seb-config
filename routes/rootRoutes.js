@@ -1,4 +1,4 @@
-const { proxyPath }     = require('./routes/utils');
+const { proxyPath }     = require('./utils');
 const logger            = require('pino')()
 
 const express = require('express')
