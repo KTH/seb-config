@@ -6,8 +6,7 @@ const logger            = require('pino')()
 const ejs               = require('ejs')
 
 // Route links
-const configRoutes  = require('./routes/configRoutes')
-const rootRoutes    = require('./routes/rootRoutes')
+const rootRoutes  = require('./routes/rootRoutes')
 
 // Express
 const app = express()
@@ -26,7 +25,6 @@ app.set('view engine', 'ejs')
 
 
 // Use Routes
-app.use(proxyPath('config'), configRoutes)
 app.use(proxyPath(''), rootRoutes)
 
 // server is listening.....

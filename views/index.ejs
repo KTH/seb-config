@@ -1,7 +1,7 @@
 <%- include ("partials/header") %>
 
 <div class="container pt-3">
-    <form action="/config" method="POST">
+    <form action="/q" method="POST">
       <div class="form-group">
           <label for="courseID">Please provide KTH Canvas Course ID:</label>
           <input type="text" maxlength="10" pattern="\d*" title="numbers only" class="form-control col-md-2" id="courseID" name="courseID" placeholder="courseID" value="" required><small id="idHelpInline" class="text-muted">
@@ -18,7 +18,7 @@
 </small>
 </div>
 <div class="container pt-3">
-<form action="/config" method="POST">
+<form action="/q" method="POST">
     <button type="submit" class="btn btn-info" value=0 name="limit">Generate Universal</button>  
 </form>
 </div>
