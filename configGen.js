@@ -7,7 +7,7 @@ function generateSEBConfig (courseID, limit) {
     const sebConfig = convert.xml2js(xml, readOptions)
     let ruleString = ''
     const ruleArr = []
-    const rCfgArr = [`\\/([0-9]+)`,`/${courseID}`]
+    const rCfgArr = [`\\/([0-9]+)`,`\\/${courseID}`]
     const sCfgArr = [`seb-redirect`, `seb-redirect/redirect?cid=${courseID}`]
     const regexArr = [
       '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
