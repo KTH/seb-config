@@ -20,3 +20,5 @@ Examples:
 - `/config?courseID=9298&cVar=1` will result in `CourseID Config`
 - `/config?cVar=0` will result in `Universal Config`
 - `/config?cVar=1` will result in 400 Bad Request
+
+.
