@@ -21,4 +21,3 @@ Examples:
 - `/config?limit=0` will result in `Universal Config`
 - `/config?limit=1` will result in 400 Bad Request
 
-.
