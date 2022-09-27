@@ -2,6 +2,8 @@ const express           = require('express')
 const expressSanitizer  = require('express-sanitizer')
 const bodyParser        = require('body-parser')
 const { proxyPath } = require('./routes/utils');
+
+// TODO This import is never used. Should it be?
 const ejs               = require('ejs')
 
 // Route links
@@ -21,6 +23,7 @@ app.get(proxyPath('_monitor'), (req, res) => {
 })
 
 app.use(proxyPath(''), express.static(__dirname))
+// TODO: Should this be a string, or the imported ejs above?
 app.set('view engine', 'ejs')
 
 
