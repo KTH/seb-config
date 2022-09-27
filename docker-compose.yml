@@ -1,16 +1,47 @@
-version: '2'
+version: "3.5"
+# Docs: https://gita.sys.kth.se/Infosys/cellus-registry/blob/master/deploy/kth-azure-app/active/docker-stack.yml
 
 services:
   web:
-    # Existing image in repository
-    # image: kthse/docker pull kthse/kth-nodejs-api:13.37
-
-    # Build from Dockerfile in current directory
-    build: .
-
-    # env_file:
-    #   - .env
-
-    # Port published from inside the Docker image
+    image: seb-config:${WEB_VERSION}
+    environment:
+      # Deploy any version of this image matching 0.1.x
+      WEB_VERSION: "^0.1.0"
+      PROXY_PATH_PREFIX: "/seb-config"
+      
     ports:
-      - 3000:3000
+      - 3000
+
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+    deploy:
+      replicas: 1
+
+      update_config:
+        order: start-first
+        parallelism: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 500M
+        reservations:
+          cpus: "0.025"
+          memory: 25M
+          
+      placement:
+        constraints:
+          - node.role == worker
+
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
