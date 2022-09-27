@@ -17,6 +17,7 @@
     "fs": "^0.0.1-security",
     "jest": "^27.5.1",
     "method-override": "^3.0.0",
+    "pino": "^8.6.0",
     "xml-js": "^1.6.11"
   },
   "engines": {

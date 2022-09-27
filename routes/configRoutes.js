@@ -2,6 +2,7 @@ const express   = require('express')
 const { proxyPath } = require('./utils');
 const sebCg     = require('../configGen.js')
 const convert   = require('xml-js')
+const logger            = require('pino')()
       
 const router    = express.Router({mergeParams: true});
 
@@ -11,9 +12,12 @@ router.get(proxyPath(''), function(req, res){
 });
 
 router.post(proxyPath(''),function (req, res) {
+  // Case for User Generated configs
   if (Object.keys(req.query).length === 0) { // handle cases with and withour param just in case
     var courseID = req.body.courseID
     var limit = req.body.limit
+    // limit (previously cVar) switches array between regex options. 
+    // One allows any CourseID, another allows only one CourseID
     if (req.body.limit === "0") { // "0" becasue js is js
       var courseID = 'Universal'
       var limit = 0
@@ -25,7 +29,9 @@ router.post(proxyPath(''),function (req, res) {
       var limit = Number(req.body.limit)
     } 
   } 
-    
+  
+  // Case for Query Generated configs
+
   else { // Query POST Request handling
     if (req.query.limit === "0") {
       var courseID = 'Universal'
@@ -43,7 +49,7 @@ router.post(proxyPath(''),function (req, res) {
 
   var patt = /^[0-9]*$/
   if (patt.test(courseID) || limit ==! 1) { // allow "Universal" to pass for limit=0
-    console.info(`Generating SEB Config for CourseID: ${courseID}.`);
+    logger.info(`Generating SEB Config for CourseID: ${courseID}.`);
     var config = sebCg.generateSEBConfig(courseID, limit)
     var filename = `SebClientSettings-${courseID}.seb`
     const writeOptions = { compact: false, ignoreComment: false, spaces: 2, fullTagEmptyElement: true }
@@ -53,9 +59,7 @@ router.post(proxyPath(''),function (req, res) {
     res.send(file);
   } else {
     res.status(400).send('Bad Request')
-    console.log(res.statusCode)
-    console.log(`Body: ${JSON.stringify(req.body)}`)
-    console.log(`Query: ${JSON.stringify(req.query)}`)
+    logger.error(`${res.statusCode} Body: ${JSON.stringify(req.body)}, Query: ${JSON.stringify(req.query)}`)
   } 
 });
 

@@ -1,7 +1,8 @@
 const express           = require('express')
 const expressSanitizer  = require('express-sanitizer')
 const bodyParser        = require('body-parser')
-const { proxyPath } = require('./routes/utils');
+const { proxyPath }     = require('./routes/utils');
+const logger            = require('pino')()
 const ejs               = require('ejs')
 
 // Route links
@@ -31,5 +32,5 @@ app.use(rootRoutes)
 // server is listening.....
 app.listen(process.env.PORT || 3000, function () {
   const port = this.address().port
-  console.log('SEB-CG is listening on port ' + port + '!')
+  logger.info('seb-config is listening on port ' + port + '!')
 })

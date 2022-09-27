@@ -1,4 +1,5 @@
 const { proxyPath } = require('./utils');
+const logger            = require('pino')()
 
 const express = require('express')
 const router = express.Router({ mergeParams: true })
@@ -14,8 +15,8 @@ router.get(proxyPath('404'), function (req, res) {
 
 // catchall for 404
 router.get('*', function (req, res) {
-  console.log('404ing, reason:')
-  console.log(req.params)
+  logger.info('404ing, reason:')
+  logger.info(req.params)
   res.redirect(proxyPath('404'))
 })
 
