@@ -4,12 +4,12 @@ const logger            = require('pino')()
 const express = require('express')
 const router = express.Router({ mergeParams: true })
 
-router.get('/', function (req, res) {
-  res.redirect(proxyPath('config'))
+router.get(proxyPath(''), function (req, res) {
+  res.render('index')
 })
 
 // universal404
-router.get('/404', function (req, res) {
+router.get(proxyPath('404'), function (req, res) {
   res.render('fourOhFour')
 })
 
