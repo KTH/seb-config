@@ -14,18 +14,20 @@ router.post(proxyPath(''),function (req, res) {
   if (Object.keys(req.query).length === 0) { // handle cases with and withour param just in case
     var courseID = req.body.courseID
     var cVar = req.body.cVar
+    // TODO: can you explain i bit further here? I get that this is some sort of business logic, but it's really hard to understand. Can you add a comment about in which scenario cVar is 0, in which it doesn't exist and in which it exist and is non-zero?
     if (req.body.cVar === "0") { // "0" becasue js is js
       var courseID = 'Universal'
       var cVar = 0
     } else if (!req.body.cVar) {
       var courseID = req.body.courseID
+      // It's generally bad practice to change the values of variables/objects outside of the scope of this function. If another function (a middleware for instance) reads req.body.cVar, they become 'time coupled', meaning that they have to be called in an exact order. I would prefer if you could handle cVar in another way.
       req.body.cVar = 1
     } else {
       var courseID = req.body.courseID
       var cVar = Number(req.body.cVar)
     } 
   } 
-    
+   // Why do you support both Posting a body and query params? 
   else { // Query POST Request handling
     if (req.query.cVar === "0") {
       var courseID = 'Universal'
