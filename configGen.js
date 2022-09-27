@@ -1,7 +1,7 @@
 const convert   = require('xml-js')
 const fs        = require('fs');
 
-function generateSEBConfig (courseID, cVar) {
+function generateSEBConfig (courseID, limit) {
     const xml = fs.readFileSync('template.xml', 'utf8')
     const readOptions = { ignoreComment: false, alwaysChildren: true }
     const sebConfig = convert.xml2js(xml, readOptions)
@@ -11,18 +11,18 @@ function generateSEBConfig (courseID, cVar) {
     const sCfgArr = [`seb-redirect`, `seb-redirect/redirect?cid=${courseID}`]
     const regexArr = [
       '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/assignments(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/external_tools\\/retrieve(.*?)$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/modules(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/modules/items/([0-9]+)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/modules\\#module_([0-9]+)$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/pages\\/([a-zA-Z0-9_.-]+)\\?module_item_id=([0-9]+)$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/files\\/([a-zA-Z0-9_.-]+)\\?module_item_id=([0-9]+)$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/quizzes(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/student_view(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/test_student(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[cVar]}\\/enrollment_invitation$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/assignments(\\/.*)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools\\/retrieve(.*?)$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules(\\/.*)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules/items/([0-9]+)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules\\#module_([0-9]+)$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/pages\\/([a-zA-Z0-9_.-]+)\\?module_item_id=([0-9]+)$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/files\\/([a-zA-Z0-9_.-]+)\\?module_item_id=([0-9]+)$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/quizzes(\\/.*)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/student_view(\\/.*)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/test_student(\\/.*)?$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/enrollment_invitation$`,
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login(.*?)$',
       '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$',
       '([\\w\\d]+\\.)?login\\.sys\\.kth\\.se(.*?)$',
@@ -49,7 +49,7 @@ function generateSEBConfig (courseID, cVar) {
         { type: 'element', name: 'integer', elements: [{ type: 'text', text: '1' }] }
       ]
     }
-    sebConfig.elements[1].elements[0].elements[3].elements[0].text = `https://kth.se/${sCfgArr[cVar]}`// starturl
+    sebConfig.elements[1].elements[0].elements[3].elements[0].text = `https://kth.se/${sCfgArr[limit]}`// starturl
     sebConfig.elements[1].elements[0].elements[237].elements = [] // purge existing rules
   
     for (let i = 0; i < regexArr.length; i++) {
