@@ -1,5 +1,6 @@
 const express   = require('express')
 const sebCg     = require('../configGen.js')
+const { proxyPath } = require('./utils');
 const convert   = require('xml-js')
 const logger            = require('pino')()
       
