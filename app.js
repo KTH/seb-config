@@ -26,8 +26,8 @@ app.set('view engine', 'ejs')
 
 
 // Use Routes
-app.use('/config', configRoutes)
-app.use(rootRoutes)
+app.use(proxyPath('config'), configRoutes)
+app.use(proxyPath(''), rootRoutes)
 
 // server is listening.....
 app.listen(process.env.PORT || 3000, function () {
