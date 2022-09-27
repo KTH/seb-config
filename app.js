@@ -1,3 +1,4 @@
+// I suggest adding https://github.com/KTH/reqvars here. We do this in other projects, it makes it easier for now developers to know how to configure the app
 const express           = require('express')
 const expressSanitizer  = require('express-sanitizer')
 const bodyParser        = require('body-parser')
