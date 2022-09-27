@@ -8,7 +8,7 @@
             Numbers only, max 10 digits. (http://canvas.kth.se/courses/<b>courseID</b>)
           </small>
         </div>
-        <button type="submit" class="btn btn-success" value=1 name="cVar">Generate</button>
+        <button type="submit" class="btn btn-success" value=1 name="limit">Generate</button>
          
   </form>
 </div>
@@ -19,13 +19,13 @@
 </div>
 <div class="container pt-3">
 <form action="/config" method="POST">
-    <button type="submit" class="btn btn-info" value=0 name="cVar">Generate Universal</button>  
+    <button type="submit" class="btn btn-info" value=0 name="limit">Generate Universal</button>  
 </form>
 </div>
 <div class="container pt-3">
   <small class="text-muted">
-  You can also send a post request to /config? with cVar=0 for universal.
-  Note: /config?courseID=xxx&cVar=0 return Universal as well.
+  You can also send a post request to /config? with limit=0 for universal.
+  Note: /config?courseID=xxx&limit=0 return Universal as well.
 </small>
 </div>
 

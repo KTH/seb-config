@@ -13,38 +13,38 @@ router.get(proxyPath(''), function(req, res){
 router.post(proxyPath(''),function (req, res) {
   if (Object.keys(req.query).length === 0) { // handle cases with and withour param just in case
     var courseID = req.body.courseID
-    var cVar = req.body.cVar
-    if (req.body.cVar === "0") { // "0" becasue js is js
+    var limit = req.body.limit
+    if (req.body.limit === "0") { // "0" becasue js is js
       var courseID = 'Universal'
-      var cVar = 0
-    } else if (!req.body.cVar) {
+      var limit = 0
+    } else if (!req.body.limit) {
       var courseID = req.body.courseID
-      req.body.cVar = 1
+      req.body.limit = 1
     } else {
       var courseID = req.body.courseID
-      var cVar = Number(req.body.cVar)
+      var limit = Number(req.body.limit)
     } 
   } 
     
   else { // Query POST Request handling
-    if (req.query.cVar === "0") {
+    if (req.query.limit === "0") {
       var courseID = 'Universal'
-      var cVar = 0
+      var limit = 0
     } 
-    else if (!req.query.cVar && req.query.courseID) {
+    else if (!req.query.limit && req.query.courseID) {
       var courseID = req.query.courseID
-      var cVar = 1
+      var limit = 1
     } 
     else {
       var courseID = req.query.courseID
-      var cVar = req.query.cVar
+      var limit = req.query.limit
     } 
   }
 
   var patt = /^[0-9]*$/
-  if (patt.test(courseID) || cVar ==! 1) { // allow "Universal" to pass for cVar=0
+  if (patt.test(courseID) || limit ==! 1) { // allow "Universal" to pass for limit=0
     console.info(`Generating SEB Config for CourseID: ${courseID}.`);
-    var config = sebCg.generateSEBConfig(courseID, cVar)
+    var config = sebCg.generateSEBConfig(courseID, limit)
     var filename = `SebClientSettings-${courseID}.seb`
     const writeOptions = { compact: false, ignoreComment: false, spaces: 2, fullTagEmptyElement: true }
     const file = convert.js2xml(config, writeOptions)
