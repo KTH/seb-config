@@ -1,4 +1,3 @@
-const { proxyPath } = require('./utils')
 const logger = require('pino')()
 const sebCg = require('../configGen.js')
 const convert = require('xml-js')
@@ -8,6 +7,10 @@ const router = express.Router({ mergeParams: true })
 // index route
 router.get('/', function (req, res) {
   res.render('index')
+})
+
+router.get('/_monitor', (req, res) => {
+  res.send('APPLICATION_STATUS: OK\n')
 })
 
 // submit form and query handling
@@ -82,7 +85,8 @@ router.get('/favicon.ico', function (req, res) {
 // catchall for 404
 router.get('*', function (req, res) {
   logger.info('404ing, reason:' + req.params)
-  res.redirect(proxyPath('404'))
+  const PROXY_PATH_PREFIX = process.env.PROXY_PATH_PREFIX0 || ''
+  res.redirect(`${PROXY_PATH_PREFIX}/404`)
 })
 
 module.exports = router
