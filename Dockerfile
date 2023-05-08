@@ -1,5 +1,5 @@
 # Stage 1. Build the actual image
-FROM kthse/kth-nodejs-16:latest
+FROM kthregistry.azurecr.io/kth-nodejs-16:latest
 WORKDIR /usr/src/app
 COPY . .
 RUN node -v
