@@ -8,7 +8,7 @@ App has 2 modes:
 - Universal config (regex is not restricted to a particular Canvas course)
 - CourseID-based config (regex is restricted to a single Canvas course)
 
-App can be POST'ed at `/config` with two query parameters:
+App can be POST'ed at `/q` with two query parameters:
 - courseID (Canvas CourseID that config is to be restricted to)
 - limit (config variant: 0 - universal config, 1 - course restricted config)
 
@@ -16,7 +16,7 @@ This allows database workflow, where you have one field dedicated to CourseID,
 and second field dedicated to restriction.
 
 Examples:
-- `/config?courseID=9298&limit=0` will result in `Universal Config`
-- `/config?courseID=9298&limit=1` will result in `CourseID Config`
-- `/config?limit=0` will result in `Universal Config`
-- `/config?limit=1` will result in 400 Bad Request
+- `/q?courseID=9298&limit=0` will result in `Universal Config`
+- `/q?courseID=9298&limit=1` will result in `CourseID Config`
+- `/q?limit=0` will result in `Universal Config`
+- `/q?limit=1` will result in 400 Bad Request
