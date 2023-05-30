@@ -147,9 +147,9 @@
     <key>newBrowserWindowShowReloadWarning</key>
     <true />
     <key>browserUserAgentWinDesktopMode</key>
-    <integer>0</integer>
+    <integer>1</integer>
     <key>browserUserAgentWinDesktopModeCustom</key>
-    <string />
+    <string>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36</string>
     <key>browserUserAgentWinTouchMode</key>
     <integer>0</integer>
     <key>browserUserAgentWinTouchModeIPad</key>
