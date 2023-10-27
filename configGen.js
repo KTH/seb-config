@@ -11,7 +11,6 @@ function generateSEBConfig (courseID, limit) {
   const sCfgArr = ['seb-redirect', `seb-redirect/redirect?cid=${courseID}`]
   const regexArr = [
     '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/assignments(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools\\/retrieve(.*?)$`,
@@ -24,16 +23,17 @@ function generateSEBConfig (courseID, limit) {
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/student_view(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/test_student(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/enrollment_invitation$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login(.*?)$',
-      '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$',
+      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login\\/canvas(.*?)$',
+      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/\\?login_success=(.*?)$',
+      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/logout(.*?)$',
+      '([\\w\\d]+\\.)?sso\\.canvaslms\\.com\\/delegated_auth_pass_through\\?target=(.*)$',
       '([\\w\\d]+\\.)?login\\.sys\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?login\\.ug\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.sys\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.ug\\.kth\\.se(.*?)$',
-      '([\\w\\d]+\\.)?sso\\.canvaslms\\.com\\/delegated_auth_pass_through\\?target=(.*)$',
-      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/logout(.*?)$',
-      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login\\/canvas(.*?)$',
-      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/\\?login_success=(.*?)$'
+      '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$'
   ]
 
   const stencilRuleObj = {
