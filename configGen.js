@@ -11,6 +11,7 @@ function generateSEBConfig (courseID, limit) {
   const sCfgArr = ['seb-redirect', `seb-redirect/redirect?cid=${courseID}`]
   const regexArr = [
     '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/assignments(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools\\/retrieve(.*?)$`,
