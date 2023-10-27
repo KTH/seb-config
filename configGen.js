@@ -23,7 +23,7 @@ function generateSEBConfig (courseID, limit) {
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/student_view(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/test_student(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/enrollment_invitation$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
+      // `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login(.*?)$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login\\/canvas(.*?)$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/\\?login_success=(.*?)$',
