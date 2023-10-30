@@ -13,7 +13,7 @@ function generateSEBConfig (courseID, limit) {
     '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/assignments(\\/.*)?$`,
-      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools\\/retrieve(.*?)$`,
+      `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules/items/([0-9]+)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/modules\\#module_([0-9]+)$`,
@@ -33,7 +33,8 @@ function generateSEBConfig (courseID, limit) {
       '([\\w\\d]+\\.)?login\\.ug\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.sys\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.ug\\.kth\\.se(.*?)$',
-      '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$'
+      '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$',
+      '([\\w\\d]+\\.)?qbl\\.sys\\.kth\\.se(\\/.*)?$',
   ]
 
   const stencilRuleObj = {

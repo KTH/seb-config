@@ -6,8 +6,8 @@ const testConfigUniversal = sebCg.generateSEBConfig(courseID, 0)
 test('1. Rules included = rules enabled', () => {
   expect(testConfigCourseID.elements[1].elements[0].elements[237].elements.length).toEqual(testConfigCourseID.elements[1].elements[0].elements[245].elements[0].text.split(';').length)
 })
-test('2. Rule Count = 23 (Sept 2022)', () => {
-  expect(testConfigCourseID.elements[1].elements[0].elements[237].elements.length).toEqual(23)
+test('2. Rule Count = 24 (Oct 2023)', () => {
+  expect(testConfigCourseID.elements[1].elements[0].elements[237].elements.length).toEqual(24)
 })
 test('3. CourseID based config contains Course ID start URL', () => {
   expect(testConfigCourseID.elements[1].elements[0].elements[3].elements[0].text).toContain(`https://kth.se/seb-redirect/redirect?cid=${courseID}`)
