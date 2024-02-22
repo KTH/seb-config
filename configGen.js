@@ -10,7 +10,8 @@ function generateSEBConfig (courseID, limit) {
   const rCfgArr = ['\\/([0-9]+)', `\\/${courseID}`]
   const sCfgArr = ['seb-redirect', `seb-redirect/redirect?cid=${courseID}`]
   const regexArr = [
-    '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
+      //Canvas
+      '([\\w\\d]+\\.)?canvas\\.kth\\.se(\\/)?$',
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/assignments(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/external_tools(\\/.*)?$`,
@@ -23,18 +24,23 @@ function generateSEBConfig (courseID, limit) {
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/student_view(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/test_student(\\/.*)?$`,
       `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses${rCfgArr[limit]}\\/enrollment_invitation$`,
-      // `([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$`,
+      '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/courses$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login(.*?)$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/login\\/canvas(.*?)$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/\\?login_success=(.*?)$',
       '([\\w\\d]+\\.)?canvas\\.kth\\.se\\/logout(.*?)$',
+      //Login Items
       '([\\w\\d]+\\.)?sso\\.canvaslms\\.com\\/delegated_auth_pass_through\\?target=(.*)$',
       '([\\w\\d]+\\.)?login\\.sys\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?login\\.ug\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.sys\\.kth\\.se(.*?)$',
       '([\\w\\d]+\\.)?saml-5\\.ug\\.kth\\.se(.*?)$',
+      //LTI
       '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$',
       '([\\w\\d]+\\.)?qbl\\.sys\\.kth\\.se(\\/.*)?$',
+      //External Services
+      '([\\w\\d]+\\.)?octave\\-online\\.net(\\/.*)?$',
+      '([\\w\\d]+\\.)?grader\\.mathworks\\.com(\\/.*)?$',
   ]
 
   const stencilRuleObj = {
