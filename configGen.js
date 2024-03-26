@@ -38,6 +38,7 @@ function generateSEBConfig (courseID, limit) {
       //LTI
       '([\\w\\d]+\\.)?kth\\.mobius\\.cloud(\\/.*)?$',
       '([\\w\\d]+\\.)?qbl\\.sys\\.kth\\.se(\\/.*)?$',
+      '([\\w\\d]+\\.)?toolkit\\.snowflakeeducation\\.com(\\/.*)?$',
       //External Services
       '([\\w\\d]+\\.)?octave\\-online\\.net(\\/.*)?$',
       '([\\w\\d]+\\.)?grader\\.mathworks\\.com(\\/.*)?$',
